@@ -119,9 +119,6 @@ while True:
                     print(f"Votre solde actuel est de {solde}$.\n")
                     time.sleep(2)
         
-    if input() == "oui":
-        continue
-    elif input() == "non":
-        break
+    
 
 
