@@ -12,3 +12,4 @@ while True:
     print(somme)
     print( )
     
+    

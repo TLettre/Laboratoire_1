@@ -1,13 +1,18 @@
-print("bonjour")
 
-import math
+def fact(y,x):
+    if y==0:
+        print (x)
+        return
+    else:
+        
+        fact(y-1,x*y)
+        
+Inumber = int(input())
+fact(Inumber,Inumber)
 
-while True:
-    Number= int(input())
 
-    Number=math.factorial(Number)
 
-    print("=")
-    print(Number)
-    print( )
 
+
+
+    
