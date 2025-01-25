@@ -115,44 +115,71 @@ def jeu2():
 ## Jeu 3 (black jack)
 
 def jeu3():
-    dealer = random.randint(1,13)+random.randint(1,13)
-    
 
-    pick=random.randint(1,13)
-    print(pick)
-    print()
-    while True:
+    global solde
+    list_card = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13]
 
-        if input("voulez piger, (y)-(n): ") == "y":
-            pick = pick + random.randint(1,13)
-            print(pick)
-            print()
+    while solde > 0:
 
-            if pick > 21:
-                print(dealer)
-                print("GAME LOSE")
-                time.sleep(5)
-                return
-
-        else:
-            print()
-            print(dealer)
-            print()
-            if dealer > 21:
-                print ("GAME WIN")
-                time.sleep(5)
-                return
-            if dealer > pick:
-                print("GAME LOSE")
-                time.sleep(5)
-                return
-            print("GAME WIN")
-            time.sleep(5)
+        print("bienvenue au jeu de Black Jack")
+        time.sleep(2)
+        if str(input("Voulez-vous continuer? Yes-(y) or No-(n): ")) == "n":
             return
 
 
+        mise = int(input("Combien voulez-vous miser ?: "))
+        if mise > solde or mise <1 :
+            print("Vous ne pouvez pas miser plus que votre solde actuel.")
+            continue
+       
+        else:
+            card1=random.randint(1,13)
+            list_card.remove(card1)
+            card2=random.choice(list_card)
+            list_card.remove(card2)
 
+            dealer = card1 + card2
 
+            
+            pick=random.choice(list_card)
+            list_card.remove(pick)
+            print(f"\nvous avez piger un {pick}\n")
+            while True:
+
+                
+
+                if input("voulez piger, (y)-(n): ") == "y":
+                    card=random.choice(list_card)
+                    list_card.remove(card)
+                    pick = pick + card
+                    print(list_card)
+                    print(f"\nvous avez piger un {card} pour un total de {pick}\n")
+
+                    if pick > 21:
+                        print(dealer)
+                        print("GAME LOSE")
+                        solde = solde-mise
+                        time.sleep(5)
+                        return
+
+                else:
+                    print()
+                    print(dealer)
+                    print()
+                    if dealer > 21:
+                        print ("GAME WIN")
+                        solde=solde+mise
+                        time.sleep(5)
+                        return
+                    if dealer > pick:
+                        print("GAME LOSE")
+                        solde=solde-mise
+                        time.sleep(5)
+                        return
+                    print("GAME WIN")
+                    solde=solde+mise
+                    time.sleep(5)
+                    return
 
 
 
@@ -160,12 +187,12 @@ def jeu3():
 while True:
 
     if solde == 0:
-        print("votre solde a atteint 0$\nVeillez suivre les étape suivante pour le remplir a nouveau:\nAppelez au 579-420-3585 et fournissez votre numéro de carte de crédit,votre date dexpiration ainsi que votre CVV")
+        print("votre solde a atteint 0$\nVeillez suivre les étape suivante pour le remplir a nouveau:\nAppelez au 579-420-3585 et fournissez votre numéro de carte de crédit,votre date d'expiration ainsi que votre CVV")
         print("Le montant choisi sera ajouté à votre balance dans la prochaine heure")
         print()
         time.sleep(10)
         montant=int(input("veuiller choisir le montant souhaité: "))
-        print("veillez patienter\n")
+        print("veuillez patienter\n")
         solde=montant
 
         time.sleep(30)
@@ -175,8 +202,8 @@ while True:
     print(f"\nvotre solde et de {solde}$\n  ")
 
     
-    choice = str(input("Quelle jeu voulé vous choisir. (A)-(B)-(C)-(D): "))
-    if choice == "D":
+    choice = str(input("Quelle jeu voulez-avous choisir. (A)-(B)-(C)-(D): "))
+    if choice == "D" or choice == "d":
         choice = old_choice
 
 
