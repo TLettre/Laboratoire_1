@@ -13,7 +13,16 @@ oflineprice1=100
 oflineclick=0
 
 
+
 while True:
+
+
+    def update_label():
+        global click
+        click = click + oflineclick
+        texte.config(text=f"click {click}")
+        game.after(1000,update_label)
+
 
  
     def onclick():
@@ -84,9 +93,12 @@ while True:
             oflineclick=oflineclick+1
             click=click-oflineprice1
             oflineprice1=oflineprice1*1.05
+            oflineprice1= int(oflineprice1)
             oflinebutton1.config(text=f"{oflineprice1} = +1s")
+            texte.config(text=f"click: {click}")
             print(oflineclick)
-
+            if oflineclick == 1:
+                update_label()
 
     
     texte = tk.Label(game, text=(f" click: {click}"))
@@ -100,18 +112,13 @@ while True:
     oflinebutton1= tk.Button(game, text=f"{oflineprice1} = +1s",command=upgrade4 )
 
 
-    click=click + oflineclick
-    texte.config(text=f"click: {click}")
-    print(oflineclick)
-    time.sleep(1)
-
     texte.pack(pady=5)
     taptexte.pack(pady=5)
 
-    button1.pack(pady=10)
-    button2.pack(pady=10)
-    button3.pack(pady=10)
-    button4.pack(pady=10)
+    button1.pack(pady=5)
+    button2.pack(pady=5)
+    button3.pack(pady=5)
+    button4.pack(pady=5)
 
     texte2.pack(pady=5)
 
@@ -121,6 +128,3 @@ while True:
   
     game.mainloop()
 
-    click=click + oflineclick
-    texte.config(text=f"click: {click}")
-    time.sleep(1)
