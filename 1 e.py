@@ -1,15 +1,12 @@
-print( )
-print("Bonjour")
+import math
 
-while True:
 
-    x=int(input()) 
-    y=int(input())
-    
-    print("=")
-    somme=x+y
+x = int(input())
 
-    print(somme)
-    print( )
-    
+
+x=math.factorial(x)
+print(x)
+
+
+
     

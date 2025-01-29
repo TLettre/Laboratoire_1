@@ -9,7 +9,7 @@ click = 0
 tap   = 1
 price1=100
 price2=10000
-
+price3=100000
 oflineprice1=100
 oflineprice2=1000
 oflineclick=0
@@ -137,6 +137,7 @@ while True:
     button4 = tk.Button(game, text=" 200 tap needed = *1.02", command=upgrade3)
     oflinebutton1= tk.Button(game, text=f"{oflineprice1} = +1s",command=upgrade4 )
     oflinebutton2= tk.Button(game, text="25 afk tap needed = +10s",command=upgrade5)
+    oflinebutton3= tk.Button(game, text="")
     ## Visual
 
     texte.pack(pady=5)

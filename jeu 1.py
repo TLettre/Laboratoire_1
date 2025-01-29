@@ -152,7 +152,6 @@ def jeu3():
                     card=random.choice(list_card)
                     list_card.remove(card)
                     pick = pick + card
-                    print(list_card)
                     print(f"\nvous avez piger un {card} pour un total de {pick}\n")
 
                     if pick > 21:

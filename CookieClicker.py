@@ -17,7 +17,7 @@ money = 0
 click_power_base = 1
 multiplier = 1
 price = [10,500,7500]
-afk_price = [50,300,2500]
+afk_price = [50,700,2500]
 afk_gain = 0
 update_time = 1000
 #loop
@@ -80,12 +80,27 @@ def afk_upgrade1():
         T_gain_sec.config(text = f"AFK gain: {math.floor(afk_gain*10)/10} x {multiplier}")
         if afk_gain == 1:
             update_label()
+        if afk_gain == 10:
+            afk_button2.config(text = f"{afk_price[1]} = +5s")
+def afk_upgrade2():
+    global money, afk_price, afk_gain
+    if afk_gain >= 10:
+        if money >= afk_price[1]:
+            afk_gain = afk_gain + 5
+            money = money - afk_price[1]
+            afk_price[1] = afk_price[1] * 1.1
+            afk_price[1] = math.floor(afk_price[1])
+            afk_button2.config(text = f"{afk_price[1]} $ = +5s")
+            T_money.config(text=(f"{math.floor(money*10)/10} $"))
+            T_gain_sec.config(text = f"AFK gain: {math.floor(afk_gain*10)/10} x {multiplier}")
+
 #definition
 button1 = tk.Button(root, text="Click Here", command = on_click)
 upgrade_button1 = tk.Button(root, text = f"{price[0]} $ = +0.1",command = upgrade1)
 upgrade_button2 = tk.Button(root, text = f"{price[1]} $ = +1"  ,command = upgrade2)
 upgrade_button3 = tk.Button(root, text = f"{price[2]} $ = +5"  ,command = upgrade3)
 afk_button1 = tk.Button(root, text = f"{afk_price[0]} $ = +1s",command = afk_upgrade1)
+afk_button2 = tk.Button(root, text = "loked",command = afk_upgrade2)
 T_money = tk.Label(root, text=(f"{money} $"))
 T_upgrade = tk.Label(root, text= "Upgrade")
 T_afk_upgrade = tk.Label(root, text = "AFK Upgrade" )
@@ -102,6 +117,7 @@ upgrade_button2.pack(pady = 1)
 upgrade_button3.pack(pady = 1)
 T_afk_upgrade.pack(pady = 5)
 afk_button1.pack(pady = 1)
+afk_button2.pack(pady = 1)
 
 
 root.mainloop()
