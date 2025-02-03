@@ -100,7 +100,7 @@ upgrade_button1 = tk.Button(root, text = f"{price[0]} $ = +0.1",command = upgrad
 upgrade_button2 = tk.Button(root, text = f"{price[1]} $ = +1"  ,command = upgrade2)
 upgrade_button3 = tk.Button(root, text = f"{price[2]} $ = +5"  ,command = upgrade3)
 afk_button1 = tk.Button(root, text = f"{afk_price[0]} $ = +1s",command = afk_upgrade1)
-afk_button2 = tk.Button(root, text = "loked",command = afk_upgrade2)
+afk_button2 = tk.Button(root, text = "locked",command = afk_upgrade2)
 T_money = tk.Label(root, text=(f"{money} $"))
 T_upgrade = tk.Label(root, text= "Upgrade")
 T_afk_upgrade = tk.Label(root, text = "AFK Upgrade" )
